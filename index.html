@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rishit Gokani — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ─── CURSOR ─── -->
+  <div id="cursor-outer"></div>
+  <div id="cursor-dot"></div>
+  <div id="cursor-trail"></div>
+
+  <!-- ─── PARTICLE CANVAS ─── -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ─── LOADER ─── -->
+  <div class="loader" id="loader">
+    <div class="loader-text">
+      <span>R</span><span>G</span>
+    </div>
+    <div class="loader-bar"><span></span></div>
+    <p class="loader-sub">Loading Portfolio</p>
+  </div>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">RG<span class="dot">.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="theme-icon sun">☀</span>
+        <span class="theme-icon moon">☽</span>
+      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" onclick="closeMobile()">About</a></li>
+      <li><a href="#skills" onclick="closeMobile()">Skills</a></li>
+      <li><a href="#projects" onclick="closeMobile()">Projects</a></li>
+      <li><a href="#achievements" onclick="closeMobile()">Achievements</a></li>
+      <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="grid-lines"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-tag reveal-up delay-1">Hello, I'm</p>
+      <h1 class="hero-name reveal-up delay-2">
+        <span class="line">Rishit</span>
+        <span class="line accent-line">Gokani</span>
+      </h1>
+      <p class="hero-role reveal-up delay-3">
+        <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+      </p>
+      <p class="hero-desc reveal-up delay-4">
+        Computer Science Engineering student at <strong>GH Patel College, Anand</strong> —<br>
+        building responsive, scalable web & mobile applications.
+      </p>
+
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse"><span></span></div>
+      <p>Scroll</p>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─── -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-label reveal-up">About Me</div>
+      <div class="about-grid">
+        <div class="about-left reveal-left">
+          <div class="about-avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-ring-2"></div>
+            <div class="avatar-inner">
+              <span class="avatar-initials">RG</span>
+              <span class="avatar-fullname">Rishit<br>Gokani</span>
+            </div>
+            <div class="avatar-badge">CSE · IoT · 2027</div>
+          </div>
+        </div>
+        <div class="about-right reveal-right">
+          <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+          <p class="about-text">
+          Innovative and motivated <strong>Computer Science Engineering student</strong> specialising in IoT, 
+            with a strong foundation in software development, algorithms, and data structures. 
+          </p>
+          <p class="about-text">
+            I'm passionate about crafting responsive, scalable web applications and mobile applications. I love turning ideas into 
+            real, impactful products.
+          </p>
+          <div class="about-info-grid">
+            <div class="info-item">
+              <span class="info-label">📍 Location</span>
+              <span class="info-value">Anand, Gujarat, India</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">🎓 Degree</span>
+              <span class="info-value">B.Tech CSE (IoT)</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">📅 Batch</span>
+              <span class="info-value">2023 – 2027</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">📊 CGPA</span>
+              <span class="info-value">8.34&nbsp;/ 10</span>
+            </div>
+          </div>
+          <a href="mailto:rishitgokani004@gmail.com" class="btn btn-primary">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ─── -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-label reveal-up">What I Know</div>
+      <h2 class="section-title reveal-up">Skills & Technologies</h2>
+
+      <div class="skills-categories">
+
+        <div class="skill-category reveal-up delay-1">
+          <h3 class="cat-title"><span class="cat-icon">⚡</span> Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-2">
+          <h3 class="cat-title"><span class="cat-icon">🌐</span> Web Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">PHP</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-3">
+          <h3 class="cat-title"><span class="cat-icon">🗄️</span> Databases</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+          </div>
+        </div>
+
+        <div class="skill-category reveal-up delay-4">
+          <h3 class="cat-title"><span class="cat-icon">📱</span> App Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Flutter</span>
+            <span class="skill-tag">Dart</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="skills-marquee-wrap reveal-up">
+        <div class="skills-marquee">
+          <div class="marquee-track">
+            <span>React</span><span>Node.js</span><span>Tailwind CSS</span>
+            <span>PostgreSQL</span><span>Python</span><span>Flutter</span>
+            <span>JavaScript</span><span>MySQL</span><span>PHP</span>
+            <span>C++</span><span>HTML</span><span>CSS</span><span>SQL</span>
+            <span>React</span><span>Node.js</span><span>Tailwind CSS</span>
+            <span>PostgreSQL</span><span>Python</span><span>Flutter</span>
+            <span>JavaScript</span><span>MySQL</span><span>PHP</span>
+            <span>C++</span><span>HTML</span><span>CSS</span><span>SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROJECTS ─── -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-label reveal-up">What I Built</div>
+      <h2 class="section-title reveal-up">Projects</h2>
+
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card reveal-up delay-1">
+          <div class="project-header">
+            <span class="project-number">01</span>
+            <div class="project-tags-top">
+              <span>HTML/CSS</span><span>JS</span><span>PHP</span><span>MySQL</span>
+            </div>
+          </div>
+          <h3 class="project-title">Bike Renting System</h3>
+          <p class="project-desc">
+            A full-stack rental platform with time-slot-based booking, dynamic pricing engine, 
+            and an admin panel for complete bike listing management — delivering a streamlined user experience.
+          </p>
+          <ul class="project-features">
+            <li>📅 Booking by time slots & dynamic pricing</li>
+            <li>🔧 Admin panel for bike listing management</li>
+            <li>🗄️ MySQL-backed persistent storage</li>
+            <li>📱 Responsive design</li>
+          </ul>
+
+          <!-- Project Demo Video -->
+          <div class="video-section">
+            <button class="btn-view-demo" onclick="toggleDemo(this)">
+              <span class="demo-icon">▶</span> View Demo
+            </button>
+            <div class="video-wrapper" style="display:none;">
+              <video class="project-video" src="videos/bike-renting-demo.mp4" controls playsinline>
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div class="project-footer">
+            <span class="project-status">Completed</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card reveal-up delay-2">
+          <div class="project-header">
+            <span class="project-number">02</span>
+            <div class="project-tags-top">
+              <span>Flutter</span><span>Dart</span><span>Android</span>
+            </div>
+          </div>
+          <h3 class="project-title">Expense Splitter App</h3>
+          <p class="project-desc">
+            A Flutter-based Android application to manage and split expenses among groups — 
+            with real-time balance tracking, automatic equal-split calculation, and a clean mobile UI.
+          </p>
+          <ul class="project-features">
+            <li>💰 Add & track group expenses</li>
+            <li>🔢 Automatic equal split calculation</li>
+            <li>⚡ Real-time balance tracking</li>
+            <li>📲 Native Android UI with Flutter</li>
+          </ul>
+
+          <!-- Project Demo Video -->
+          <div class="video-section">
+            <button class="btn-view-demo" onclick="toggleDemo(this)">
+              <span class="demo-icon">▶</span> View Demo
+            </button>
+            <div class="video-wrapper" style="display:none;">
+              <video class="project-video" src="videos/expense-splitter-demo.mp4" controls playsinline>
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div class="project-footer">
+            <span class="project-status">Completed</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+         <div class="project-card reveal-up delay-3">
+          <div class="project-header">
+            <span class="project-number">03</span>
+            <div class="project-tags-top">
+              <span>Python</span><span>Flask</span><span>JS</span><span>NLP</span>
+            </div>
+          </div>
+          <h3 class="project-title">YouTube Ingredient Extractor</h3>
+          <p class="project-desc">
+            Developed a web application that extracts ingredient lists from YouTube recipe videos by processing video transcripts. The system uses yt_dlp to fetch video data and applies NLP techniques to identify ingredient names automatically.
+          </p>
+          <ul class="project-features">
+            <li>📺 Video data & transcript fetching via yt_dlp</li>
+            <li>🧠 NLP-powered automatic ingredient identification</li>
+            <li>⚙️ Built with Python & Flask backend</li>
+            <li>🌐 Responsive HTML, CSS & JS frontend</li>
+          </ul>
+            <div class="video-section">
+                        <button class="btn-view-demo" onclick="toggleDemo(this)">
+                          <span class="demo-icon">▶</span> View Demo
+                        </button>
+                        <div class="video-wrapper" style="display:none;">
+                          <video class="project-video" src="videos/expense-splitter-demo.mp4" controls playsinline>
+                           Your browser does not support the video tag.
+                         </video>
+                       </div>
+                     </div>
+            
+          <div class="project-footer">
+            <span class="project-status">Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LEADERSHIP ─── -->
+  <section class="leadership section" id="leadership">
+    <div class="container">
+      <div class="section-label reveal-up">Community</div>
+      <h2 class="section-title reveal-up">Leadership</h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-badge">CSI Student Branch</span>
+            <h3>Logistic Head</h3>
+            <p>Organised <strong>six technical workshops</strong> and one coding event as Logistics Head of the Computer Society of India Student Branch.</p>
+            <p>Managed complete logistics for a <strong>National Level 24-Hour Hackathon</strong> organised by Odoo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ACHIEVEMENTS ─── -->
+  <section class="achievements section" id="achievements">
+    <div class="container">
+      <div class="section-label reveal-up">Recognition</div>
+      <h2 class="section-title reveal-up">Achievements & Certifications</h2>
+
+      <div class="ach-grid">
+
+        <div class="ach-card big reveal-up delay-1">
+          <div class="ach-icon">🏆</div>
+          <div class="ach-body">
+            <h3>3rd Place — Robofest Gujarat 4.0</h3>
+            <p>Secured 3rd place in the Fun &amp; Maze-Solving Robot category, winning a prize of <strong>₹5,00,000</strong>.</p>
+          </div>
+          <div class="ach-ribbon">Winner</div>
+        </div>
+
+        <div class="ach-card reveal-up delay-2">
+          <div class="ach-icon">📜</div>
+          <div class="ach-body">
+            <h3>NPTEL Certification</h3>
+            <p>Introduction to Internet of Things — offered by <strong>IIT Kharagpur</strong>.</p>
+          </div>
+        </div>
+
+        <div class="ach-card reveal-up delay-3">
+          <div class="ach-icon">🎖️</div>
+          <div class="ach-body">
+            <h3>Logistics Lead</h3>
+            <p>National Level <strong>24-Hour Hackathon</strong> organised by Odoo.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-label reveal-up">Let's Talk</div>
+      <h2 class="section-title reveal-up">Contact Me</h2>
+
+      <div class="contact-grid">
+        <div class="contact-left reveal-left">
+          <p class="contact-intro">
+            I'm currently looking for <strong>web development internship</strong> opportunities. 
+            Whether you have a project in mind or just want to connect — my inbox is always open!
+          </p>
+          <div class="contact-links">
+            <a href="mailto:rishitgokani004@gmail.com" class="contact-link">
+              <span class="clink-icon">📧</span>
+              <div>
+                <span class="clink-label">Email</span>
+                <span class="clink-value">rishitgokani004@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://www.linkedin.com/in/rishit-gokani-05oc2005" target="_blank" class="contact-link">
+              <span class="clink-icon">🔗</span>
+              <div>
+                <span class="clink-label">LinkedIn</span>
+                <span class="clink-value">linkedin.com/in/rishit-gokani</span>
+              </div>
+            </a>
+            <a href="https://github.com/rishitgokani005/" target="_blank" class="contact-link github-centered">
+  <div class="github-inner">
+    <span class="clink-icon">💻</span>
+    <span class="clink-value github-text">GitHub</span>
+  </div>
+</a>
+          </div>
+        </div>
+
+        <div class="contact-right reveal-right">
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell me about your project or opportunity..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span>Send Message</span> <span>→</span>
+            </button>
+            <p class="form-note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">Rishit Gokani<span class="dot">.</span></span>
+        <p class="footer-copy">© 2024 Rishit Gokani. Built with ❤️ and lots of ☕</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="back-top">↑ Top</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
