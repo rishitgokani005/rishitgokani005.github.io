@@ -1,6 +1,3 @@
-/* ════════════════════════════════════
-   RISHIT GOKANI — PORTFOLIO SCRIPTS v2
-   ════════════════════════════════════ */
 
 // ─── LOADER ───
 window.addEventListener('load', () => {
@@ -79,7 +76,8 @@ document.querySelectorAll('a, button, .skill-tag, .project-card, .contact-link, 
 document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
 document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
 
-// ─── PARTICLE CANVAS ───
+
+// ─── PARTICLE CANVAS (background ambient) ───
 function initParticles() {
   const canvas = document.getElementById('particle-canvas');
   const ctx    = canvas.getContext('2d');
@@ -91,7 +89,7 @@ function initParticles() {
     H = canvas.height = window.innerHeight;
   });
 
-  const PARTICLE_COUNT = 70;
+  const PARTICLE_COUNT = 60;
   const particles = [];
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
@@ -102,7 +100,7 @@ function initParticles() {
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.3,
       alpha: Math.random() * 0.5 + 0.1,
-      hue: Math.random() > 0.5 ? 166 : 260, // teal or purple
+      hue: Math.random() > 0.5 ? 166 : 260,
     });
   }
 
@@ -119,17 +117,16 @@ function initParticles() {
       ctx.fill();
     });
 
-    // Connecting lines
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
+        const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 120) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0,245,195,${0.04 * (1 - dist / 120)})`;
+          ctx.strokeStyle = `rgba(0,245,195,${0.035 * (1 - dist / 120)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -202,7 +199,7 @@ function typeEffect() {
   }
   setTimeout(typeEffect, deleting ? 55 : 85);
 }
-setTimeout(typeEffect, 2400);
+setTimeout(typeEffect, 2600);
 
 // ─── SCROLL REVEAL ───
 const revealObserver = new IntersectionObserver(
@@ -244,9 +241,9 @@ function startCounters() {
 // ─── VIDEO DEMO TOGGLE ───
 function toggleDemo(btn) {
   const wrapper = btn.nextElementSibling;
-  const video = wrapper.querySelector('video');
-  const icon = btn.querySelector('.demo-icon');
-  
+  const video   = wrapper.querySelector('video');
+  const icon    = btn.querySelector('.demo-icon');
+
   if (wrapper.style.display === 'none') {
     wrapper.style.display = 'block';
     icon.textContent = '▼';
@@ -287,15 +284,16 @@ window.addEventListener('scroll', () => {
 
 // ─── ADVANCED 3D TILT ON PROJECT CARDS ───
 document.querySelectorAll('.project-card').forEach(card => {
-  let lastX = 0, lastY = 0;
   card.addEventListener('mousemove', e => {
-    const rect  = card.getBoundingClientRect();
+    const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
     const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    lastX = x; lastY = y;
-    card.style.transform = `perspective(800px) translateY(-8px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
-    // Dynamic highlight
-    card.style.background = `radial-gradient(ellipse at ${(x+0.5)*100}% ${(y+0.5)*100}%, rgba(0,245,195,0.07), var(--glass) 60%)`;
+
+    // Deeper 3D tilt with perspective
+    card.style.transform = `perspective(900px) translateY(-12px) translateZ(20px) rotateX(${-y * 12}deg) rotateY(${x * 12}deg)`;
+
+    // Dynamic light gradient
+    card.style.background = `radial-gradient(ellipse at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(0,245,195,0.09), var(--glass) 65%)`;
   });
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
@@ -309,7 +307,7 @@ document.querySelectorAll('.ach-card').forEach(card => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
     const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    card.style.transform = `perspective(600px) translateY(-6px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
+    card.style.transform = `perspective(700px) translateY(-10px) translateZ(14px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
   });
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
@@ -338,15 +336,62 @@ document.querySelectorAll('.skill-category').forEach(cat => {
   skillObserver.observe(cat);
 });
 
-// ─── FLOATING AVATAR PARALLAX ───
-const avatar = document.querySelector('.about-avatar');
-if (avatar) {
-  window.addEventListener('mousemove', e => {
-    const xRatio = (e.clientX / window.innerWidth  - 0.5) * 12;
-    const yRatio = (e.clientY / window.innerHeight - 0.5) * 12;
-    avatar.style.transform = `translate(${xRatio}px, ${yRatio}px)`;
+// ─── RG LOGO — measure R width so G aligns perfectly beside it ───
+function initRgLogo() {
+  const rChar = document.querySelector('.rg-char-r');
+  const gLine = document.querySelector('.rg-line-g');
+  if (!rChar || !gLine) return;
+
+  // Measure rendered width of the "R" character
+  const rWidth = rChar.getBoundingClientRect().width;
+  // Set as a CSS variable used in translateX
+  gLine.style.setProperty('--rg-r-width', rWidth + 'px');
+}
+
+// Run once after fonts/layout are ready, and on resize
+window.addEventListener('load', initRgLogo);
+window.addEventListener('resize', initRgLogo);
+
+// ─── RG LOGO — subtle 3D tilt on hover ───
+const rgLogoEl = document.querySelector('.rg-logo');
+
+if (rgLogoEl) {
+  rgLogoEl.addEventListener('mousemove', e => {
+    const rect = rgLogoEl.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    rgLogoEl.style.transform =
+      `perspective(800px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
+    rgLogoEl.style.transition = 'transform 0.1s ease, height 0.55s cubic-bezier(0.4,0,0.2,1)';
+  });
+
+  rgLogoEl.addEventListener('mouseleave', () => {
+    rgLogoEl.style.transform = '';
+    rgLogoEl.style.transition = 'transform 0.65s cubic-bezier(0.34,1.56,0.64,1), height 0.55s cubic-bezier(0.4,0,0.2,1)';
   });
 }
+// ─── SECTION SKILL CATEGORIES 3D TILT ───
+document.querySelectorAll('.skill-category').forEach(cat => {
+  cat.addEventListener('mousemove', e => {
+    const rect = cat.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    cat.style.transform = `perspective(900px) translateY(-10px) translateZ(12px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
+  });
+  cat.addEventListener('mouseleave', () => { cat.style.transform = ''; });
+});
+
+// ─── CONTACT LINK TILT ───
+document.querySelectorAll('.contact-link').forEach(link => {
+  link.addEventListener('mousemove', e => {
+    const rect = link.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    link.style.transform = `perspective(600px) translateX(10px) translateZ(8px) rotateX(${-y * 5}deg) rotateY(${x * 5}deg)`;
+  });
+  link.addEventListener('mouseleave', () => { link.style.transform = ''; });
+});
+
 
 // ─── SECTION ENTRANCE GLOW ───
 const glowObserver = new IntersectionObserver(entries => {
@@ -364,9 +409,20 @@ document.querySelectorAll('.btn').forEach(btn => {
     const rect = btn.getBoundingClientRect();
     const xRel = e.clientX - rect.left - rect.width  / 2;
     const yRel = e.clientY - rect.top  - rect.height / 2;
-    btn.style.transform = `translate(${xRel * 0.15}px, ${yRel * 0.15}px) scale(1.04)`;
+    btn.style.transform = `translate(${xRel * 0.18}px, ${yRel * 0.18}px) scale(1.05) translateZ(8px)`;
   });
   btn.addEventListener('mouseleave', () => {
     btn.style.transform = '';
   });
+});
+
+// ─── INFO ITEM TILT ───
+document.querySelectorAll('.info-item').forEach(item => {
+  item.addEventListener('mousemove', e => {
+    const rect = item.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    item.style.transform = `perspective(500px) translateY(-6px) translateZ(8px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg)`;
+  });
+  item.addEventListener('mouseleave', () => { item.style.transform = ''; });
 });
