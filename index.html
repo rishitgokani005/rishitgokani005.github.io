@@ -4,19 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rishit Gokani — Portfolio</title>
+  <title>Rishit Gokani | AI/ML & Full-Stack</title>
+
+  <!-- Meta Tags for SEO -->
+  <meta name="description" content="Portfolio of Rishit Gokani — B.Tech Computer Science (IoT) student specializing in Full-Stack Web Development, Machine Learning pipelines, Cybersecurity scanners, and IoT systems." />
+  <meta name="keywords" content="Rishit Gokani, Full Stack Developer, Machine Learning, Cybersecurity, Vulnerability Scanner, Fuel Consumption Analysis, IoT, Flutter, Python, Scikit-Learn, Node.js" />
+  <meta name="author" content="Rishit Gokani" />
+
+  <!-- Preconnect & Retro Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@400..700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 
 <body>
 
-  <!-- ─── CURSOR ─── -->
+  <!-- ─── RETRO CRT SCANLINES OVERLAY ─── -->
+  <div id="crt-scanlines"></div>
+
+  <!-- ─── RETRO PIXEL CURSOR ─── -->
   <div id="cursor-outer"></div>
   <div id="cursor-dot"></div>
   <div id="cursor-trail"></div>
@@ -24,33 +31,22 @@
   <!-- ─── PARTICLE CANVAS ─── -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- ─── LOADER ─── -->
-  <!-- ─── LOADER ─── -->
-  <!-- <div class="loader" id="loader">
-  <div class="loader-rg-wrap">
-    <svg class="loader-rg-svg" viewBox="0 0 160 80" xmlns="http://www.w3.org/2000/svg">
-      <text class="rg-letter rg-r" x="0" y="68" font-size="80" font-weight="800" font-family="Syne, sans-serif">R</text>
-      <text class="rg-letter rg-g" x="80" y="68" font-size="80" font-weight="800" font-family="Syne, sans-serif">G</text>
-      <line class="rg-underline" x1="0" y1="76" x2="160" y2="76"/>
-     
-      <circle class="rg-orbit-dot" r="5" cx="80" cy="40"/>
-    </svg>
-    <div class="loader-rg-glow"></div>
-  </div>
-  <div class="loader-bar"><span></span></div>
-  <p class="loader-sub">Loading Portfolio</p>
-</div> -->
-  <!-- ─── LOADER ─── -->
+  <!-- ─── RETRO BOOT LOADER ─── -->
   <div class="loader" id="loader">
-    <div class="loader-text">
-      <span>R</span><span>G</span>
+    <div class="loader-box">
+      <div class="loader-text">
+        <span>R</span><span>G</span>
+      </div>
+      <div class="loader-bar"><span></span></div>
+      <p class="loader-sub">BOOTING SYSTEM... READY</p>
     </div>
-    <div class="loader-bar"><span></span></div>
-    <p class="loader-sub">Loading Portfolio</p>
   </div>
+
   <!-- ─── NAV ─── -->
   <nav class="nav" id="nav">
-    <div class="nav-logo">RG<span class="dot">.</span></div>
+    <div class="nav-logo">
+      RISHIT GOKANI <span class="badge-tag">v2.5</span>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -59,7 +55,13 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <button class="retro-btn-sm" id="soundToggle" title="Toggle Retro Sound Effects">
+        <span id="soundIcon">🔊</span> SOUND
+      </button>
+      <button class="retro-btn-sm" id="crtToggle" title="Toggle CRT Scanlines">
+        <span>📺</span> CRT
+      </button>
+      <button class="retro-btn-sm" id="themeToggle" title="Toggle Vintage Theme">
         <span class="theme-icon sun">☀</span>
         <span class="theme-icon moon">☽</span>
       </button>
@@ -82,86 +84,73 @@
 
   <!-- ─── HERO ─── -->
   <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="grid-lines"></div>
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-    </div>
-    <div class="hero-content">
-      <p class="hero-tag reveal-up delay-1">Hello, I'm</p>
-      <h1 class="hero-name reveal-up delay-2">
-        <span class="line">Rishit</span>
-        <span class="line accent-line">Gokani</span>
-      </h1>
-      <p class="hero-role reveal-up delay-3">
-        <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
-      </p>
-      <p class="hero-desc reveal-up delay-4">
-        Computer Science (IoT) student at <strong>GH Patel College, Anand</strong> —<br>
-        building scalable web apps, ML pipelines &amp; end-to-end IoT systems.
-      </p>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-mouse"><span></span></div>
-      <p>Scroll</p>
+    <div class="container">
+      <div class="hero-box">
+        <div class="hero-header-bar">
+          <span class="hero-sys-badge">[ SYSTEM: ONLINE ]</span>
+          <span class="hero-sys-badge" style="background: var(--accent-2);">[ LOC: ANAND, IN ]</span>
+        </div>
+        <p class="hero-tag">&gt; INITIALIZING PROFILE...</p>
+        <h1 class="hero-name">
+          RISHIT <span class="accent-line">GOKANI</span>
+        </h1>
+        <p class="hero-role">
+          &gt; <span class="typed-text" id="typedText"></span><span class="cursor-blink">_</span>
+        </p>
+        <p class="hero-desc">
+          Computer Science (IoT) student at <strong>GH Patel College of Engineering &amp; Technology (GCET), Anand</strong>.
+          Specialising in scalable full-stack web applications, machine learning predictive models  .
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">⚡ EXPLORE PROJECTS</a>
+          <a href="https://github.com/rishitgokani005" target="_blank" class="btn btn-ghost">💻 GITHUB PROFILE</a>
+          <a href="mailto:rishitgokani005@gmail.com" class="btn btn-ghost">📧 GET IN TOUCH</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ─── ABOUT ─── -->
   <section class="about section" id="about">
     <div class="container">
-      <div class="section-label reveal-up">About Me</div>
+      <div class="section-label">&gt; SECTION 01</div>
+      <h2 class="section-title">ABOUT ME</h2>
+
       <div class="about-grid">
-        <div class="about-left reveal-left">
-          <div class="about-avatar" id="aboutAvatar">
-            <div class="rg-expand-wrap">
-              <div class="rg-expand-glow"></div>
-              <div class="rg-expand-logo">
-                <div class="rg-letter-row rg-line-r">
-                  <span class="rg-initial rg-char-r">R</span>
-                  <span class="rg-expand-text">ishit</span>
-                </div>
-                <div class="rg-letter-row rg-line-g">
-                  <span class="rg-initial">G</span>
-                  <span class="rg-expand-text">okani</span>
-                </div>
-              </div>
-            </div>
-            <div class="avatar-badge">CSE · IoT · 2027</div>
+        <div class="about-avatar-box">
+          <div style="font-family: var(--font-display); font-size: 72px; color: var(--accent); text-shadow: 3px 3px 0 #000;">
+            RG
           </div>
+          <div class="avatar-badge">CSE (IoT) · BATCH 2023–2027</div>
         </div>
-        <div class="about-right reveal-right">
-          <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+
+        <div class="about-text-box">
           <p class="about-text">
-            <strong>Computer Science (IoT) student</strong> specialising in full-stack development, machine learning,
-            and IoT systems.
+            <strong>Computer Science (IoT) Engineering student</strong> passionate about end-to-end product development — bridging machine learning algorithms, cybersecurity analysis, robust REST APIs, and embedded IoT systems.
           </p>
           <p class="about-text">
-            Proven ability to build scalable web applications and deploy end-to-end intelligent systems integrating
-            hardware, ML pipelines, and real-time APIs. Driven by a passion for turning complex ideas into impactful,
-            production-ready products.
+            Experienced in architecting automated security vulnerability scanners, training predictive ML models (Random Forest, Regression), building hyperlocal web platforms, and deploying sensor-fusion IoT devices. Driven by clean architecture, low-latency execution, and retro aesthetics.
           </p>
+
           <div class="about-info-grid">
             <div class="info-item">
-              <span class="info-label">📍 Location</span>
+              <span class="info-label">📍 LOCATION</span>
               <span class="info-value">Anand, Gujarat, India</span>
             </div>
             <div class="info-item">
-              <span class="info-label">🎓 Degree</span>
+              <span class="info-label">🎓 DEGREE</span>
               <span class="info-value">B.Tech CSE (IoT)</span>
             </div>
             <div class="info-item">
-              <span class="info-label">📅 Batch</span>
+              <span class="info-label">📅 BATCH</span>
               <span class="info-value">2023 – 2027</span>
             </div>
             <div class="info-item">
-              <span class="info-label">📊 CGPA</span>
-              <span class="info-value">8.30&nbsp;/ 10</span>
+              <span class="info-label">📊 ACADEMIC CGPA</span>
+              <span class="info-value">8.30 / 10.00</span>
             </div>
           </div>
-          <a href="/cdn-cgi/l/email-protection#384a514b50514c5f575359565108080c785f55595154165b5755"
-            class="btn btn-primary">Get In Touch</a>
         </div>
       </div>
     </div>
@@ -170,88 +159,96 @@
   <!-- ─── SKILLS ─── -->
   <section class="skills section" id="skills">
     <div class="container">
-      <div class="section-label reveal-up">What I Know</div>
-      <h2 class="section-title reveal-up">Skills &amp; Technologies</h2>
+      <div class="section-label">&gt; SECTION 02</div>
+      <h2 class="section-title">SKILLS &amp; TECHNOLOGIES</h2>
 
       <div class="skills-categories">
 
-        <div class="skill-category reveal-up delay-1">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">⚡</span> Programming Languages</h3>
+        <!-- Languages -->
+        <div class="skill-category">
+          <h3 class="cat-title">⚡ Languages</h3>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">C++</span>
             <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Dart</span>
+            <span class="skill-tag">PHP</span>
             <span class="skill-tag">SQL</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
           </div>
         </div>
 
-        <div class="skill-category reveal-up delay-2">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">🌐</span> Web &amp; Frameworks</h3>
+        <!-- Web & Frameworks -->
+        <div class="skill-category">
+          <h3 class="cat-title">🌐 Web &amp; Frameworks</h3>
           <div class="skill-tags">
-            <span class="skill-tag">AngularJS</span>
-            <span class="skill-tag">Express.js</span>
             <span class="skill-tag">Flask</span>
+            <span class="skill-tag">Express.js</span>
             <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">AngularJS</span>
+            <span class="skill-tag">Streamlit</span>
             <span class="skill-tag">REST APIs</span>
           </div>
         </div>
 
-        <div class="skill-category reveal-up delay-3">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">🗄️</span> Databases</h3>
+        <!-- Machine Learning & Data -->
+        <div class="skill-category">
+          <h3 class="cat-title">🤖 ML &amp; Data Science</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Scikit-Learn</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Random Forest</span>
+            <span class="skill-tag">Regression Models</span>
+          </div>
+        </div>
+
+
+        <!-- Databases & Mobile -->
+        <div class="skill-category">
+          <h3 class="cat-title">🗄️ Databases &amp; Mobile</h3>
           <div class="skill-tags">
             <span class="skill-tag">MySQL</span>
             <span class="skill-tag">MongoDB</span>
+           
           </div>
         </div>
 
-        <div class="skill-category reveal-up delay-4">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">🤖</span> ML</h3>
+                <div class="skill-category">
+          <h3 class="cat-title">📱 Mobile</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Scikit-Learn</span>
-            <span class="skill-tag">Feature Engineering</span>
-            <span class="skill-tag">Data Preprocessing</span>
 
-          </div>
-        </div>
-
-        <div class="skill-category reveal-up delay-5">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">📱</span> Mobile Application</h3>
-          <div class="skill-tags">
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Firestore</span>
             <span class="skill-tag">Flutter</span>
-            <span class="skill-tag">Dart</span>
           </div>
         </div>
 
-        <div class="skill-category reveal-up delay-6">
-          <div class="skill-category-face"></div>
-          <h3 class="cat-title"><span class="cat-icon">🛠️</span> Tools</h3>
+        <!-- Tools & DevOps -->
+        <div class="skill-category">
+          <h3 class="cat-title">🛠️ Tools &amp; Environment</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Git &amp; GitHub</span>
             <span class="skill-tag">NPM</span>
           </div>
         </div>
 
       </div>
 
-      <div class="skills-marquee-wrap reveal-up">
+      <!-- Marquee -->
+      <div class="skills-marquee-wrap">
         <div class="skills-marquee">
           <div class="marquee-track">
-            <span>Python</span><span>AngularJS</span><span>Express.js</span>
-            <span>Flask</span><span>Node.js</span><span>Flutter</span>
-            <span>JavaScript</span><span>MySQL</span><span>MongoDB</span>
-            <span>Scikit-Learn</span><span>C++</span><span>HTML</span><span>CSS</span><span>Git</span>
+            <span>PYTHON</span><span>SCIKIT-LEARN</span>
+            <span>FLASK</span><span>NODE.JS</span><span>EXPRESS</span><span>ANGULARJS</span>
+            <span>STREAMLIT</span><span>FLUTTER</span><span>MYSQL</span>
+            <span>MONGODB</span><span>PANDAS</span><span>GIT</span>
             <!-- Duplicate for seamless scroll -->
-            <span>Python</span><span>AngularJS</span><span>Express.js</span>
-            <span>Flask</span><span>Node.js</span><span>Flutter</span>
-            <span>JavaScript</span><span>MySQL</span><span>MongoDB</span>
-            <span>Scikit-Learn</span><span>C++</span><span>HTML</span><span>CSS</span><span>Git</span>
+            <span>PYTHON</span><span>SCIKIT-LEARN</span><span>
+            <span>FLASK</span><span>NODE.JS</span><span>EXPRESS</span><span>ANGULARJS</span>
+            <span>STREAMLIT</span><span>FLUTTER</span><span>MYSQL</span>
+            <span>MONGODB</span><span>PANDAS</span><span>GIT</span>
           </div>
         </div>
       </div>
@@ -261,141 +258,183 @@
   <!-- ─── PROJECTS ─── -->
   <section class="projects section" id="projects">
     <div class="container">
-      <div class="section-label reveal-up">What I Built</div>
-      <h2 class="section-title reveal-up">Projects</h2>
+      <div class="section-label">&gt; SECTION 03</div>
+      <h2 class="section-title">PROJECT ARCHIVE</h2>
 
       <div class="projects-grid">
 
-        <!-- Project 1: Bike Renting System -->
-        <div class="project-card reveal-up delay-1">
-          <div class="card-depth-layer"></div>
-          <div class="project-header">
-            <span class="project-number">01</span>
-            <div class="project-tags-top">
-              <span>HTML/CSS</span><span>JS</span><span>PHP</span><span>MySQL</span>
+        <!-- Project 1: Security Vulnerability Scanner -->
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">01</span>
+              <div class="project-tags-top">
+                <span>Python</span><span>RAG</span><span>Groq API</span><span>Streamlit</span>
+              </div>
             </div>
+            <h3 class="project-title">SecurityGuardAI — Vulnerability Scanner</h3>
+            <p class="project-desc">
+              Automated cybersecurity scanning engine that performs dynamic port discovery, deep network packet analysis with Scapy, and OWASP Top 10 vulnerability assessments with interactive dashboards.
+            </p>
+            <ul class="project-features">
+              <li>🛡️ Network port scanning &amp; service fingerprinting via Nmap</li>
+              <li>🔍 Scapy deep packet inspection &amp; traffic analysis</li>
+              <li>⚠️ OWASP vulnerability detection logic &amp; severity scoring</li>
+              <li>📊 Interactive Streamlit &amp; Flask dashboard with report generation</li>
+            </ul>
           </div>
-          <h3 class="project-title">UrbanRide — Bike Renting</h3>
-          <p class="project-desc">
-            A full-stack bike rental platform supporting multi-location bookings with dynamic pricing, real-time booking
-            engine, and a comprehensive admin dashboard.
-          </p>
-          <ul class="project-features">
-            <li>📍 Multi-location bookings with dynamic pricing</li>
-            <li>🔧 Admin dashboard with full bike &amp; user management</li>
-            <li>🗄️ Optimised MySQL for concurrent requests &amp; data integrity</li>
-            <li>📱 Fully responsive cross-device UI</li>
-          </ul>
-
           <div class="project-footer">
-            <span class="project-status">Completed</span>
-            <a href="https://github.com/rishitgokani005/Bike-Renting-System" target="_blank"
-              class="project-github-link">GitHub ↗</a>
+            <span class="project-status">[RAG / PYTHON]</span>
+            <a href="https://github.com/rishitgokani005/Security-Vulnerability-Scanner" target="_blank" class="project-github-link">GitHub ↗</a>
           </div>
         </div>
 
-        <!-- Project 2: Expense Splitter -->
-        <div class="project-card reveal-up delay-2">
-          <div class="card-depth-layer"></div>
-          <div class="project-header">
-            <span class="project-number">02</span>
-            <div class="project-tags-top">
-              <span>Flutter</span><span>Dart</span><span>Firebase</span>
+        <!-- Project 2: Fuel Consumption Analysis -->
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">02</span>
+              <div class="project-tags-top">
+                <span>Python</span><span>Scikit-Learn</span><span>Pandas</span><span>Matplotlib</span>
+              </div>
             </div>
+            <h3 class="project-title">Fuel Consumption Analysis &amp; ML Efficiency</h3>
+            <p class="project-desc">
+              Machine Learning telemetry system analyzing vehicle driving conditions (speed, temp, gas grade E10 vs SP98, AC) to predict fuel consumption and model optimal driving efficiency.
+            </p>
+            <ul class="project-features">
+              <li>🚗 Multi-variable telemetry EDA (distance, speed, weather, gas grade)</li>
+              <li>📈 Linear Regression &amp; Random Forest predictive models</li>
+              <li>⚙️ Preprocessing pipelines &amp; feature importance correlation</li>
+              <li>📉 Visual analytics notebooks quantifying consumption factors</li>
+            </ul>
           </div>
-          <h3 class="project-title">Expense Splitter App</h3>
-          <p class="project-desc">
-            A real-time expense-splitting mobile app with Firebase Authentication, multi-user synchronisation, PDF
-            reports, charts, and notifications.
-          </p>
-          <ul class="project-features">
-            <li>🔐 Firebase Authentication &amp; multi-user sync</li>
-            <li>📊 Firestore + Provider state management</li>
-            <li>📄 PDF expense reports &amp; visual charts</li>
-            <li>🔔 Push notifications &amp; in-app ads</li>
-          </ul>
           <div class="project-footer">
-            <span class="project-status">Completed</span>
+            <span class="project-status">[DATA SCIENCE / ML]</span>
+            <a href="https://github.com/rishitgokani005/FuelConsumptionAnalysis" target="_blank" class="project-github-link">GitHub ↗</a>
           </div>
         </div>
 
-        <!-- Project 3: YouTube Ingredient Extractor -->
-        <div class="project-card reveal-up delay-3">
-          <div class="card-depth-layer"></div>
-          <div class="project-header">
-            <span class="project-number">03</span>
-            <div class="project-tags-top">
-              <span>Python</span><span>Flask</span><span>Regex</span><span>yt-dlp</span>
+        <!-- Project 3: UrbanRide -->
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">03</span>
+              <div class="project-tags-top">
+                <span>HTML/CSS</span><span>JS</span><span>PHP</span><span>MySQL</span>
+              </div>
             </div>
+            <h3 class="project-title">UrbanRide — Bike Renting Platform</h3>
+            <p class="project-desc">
+              Full-stack bike rental platform supporting multi-location bookings with dynamic pricing, real-time availability engine, and comprehensive admin dashboard.
+            </p>
+            <ul class="project-features">
+              <li>📍 Multi-location reservation system with dynamic rates</li>
+              <li>🔧 Comprehensive admin panel for fleet &amp; booking management</li>
+              <li>🗄️ Optimized MySQL schema for concurrent booking transactions</li>
+            </ul>
           </div>
-          <h3 class="project-title">YouTube Ingredient Extractor</h3>
-          <p class="project-desc">
-            Automated extraction engine that processes YouTube subtitles using Regex pipelines to identify ingredients,
-            then maps them to real-time inventory via FlashMart REST API.
-          </p>
-          <ul class="project-features">
-            <li>📺 Subtitle extraction via yt-dlp with Regex pipelines</li>
-            <li>🛒 FlashMart REST API integration for product mapping</li>
-            <li>💰 Real-time inventory tracking &amp; cost estimation</li>
-            <li>⚙️ Flask backend with responsive JS frontend</li>
-          </ul>
-
           <div class="project-footer">
-            <span class="project-status">Completed</span>
-            <a href="https://github.com/rishitgokani005/youtube-ingredient-extractor" target="_blank"
-              class="project-github-link">GitHub ↗</a>
+            <span class="project-status">[FULL STACK / WEB]</span>
+            <a href="https://github.com/rishitgokani005/Bike-Renting-System" target="_blank" class="project-github-link">GitHub ↗</a>
           </div>
         </div>
 
         <!-- Project 4: FlashMart -->
-        <div class="project-card reveal-up delay-4">
-          <div class="card-depth-layer"></div>
-          <div class="project-header">
-            <span class="project-number">04</span>
-            <div class="project-tags-top">
-              <span>AngularJS</span><span>Node.js</span><span>MongoDB</span><span>ML</span>
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">04</span>
+              <div class="project-tags-top">
+                <span>AngularJS</span><span>Node.js</span><span>MongoDB</span><span>ML</span>
+              </div>
             </div>
+            <h3 class="project-title">FlashMart — Hyperlocal Grocery</h3>
+            <p class="project-desc">
+              Hyperlocal grocery delivery platform featuring YouTube recipe transcript parsing to auto-populate cart items, sub-10ms search index, and recommendation engine.
+            </p>
+            <ul class="project-features">
+              <li>🛒 YouTube recipe transcript NLP parsing to cart items</li>
+              <li>⚡ Sub-10ms product indexing &amp; search architecture</li>
+              <li>🤖 ML-based personalized item recommendation engine</li>
+            </ul>
           </div>
-          <h3 class="project-title">FlashMart — Hyperlocal Grocery</h3>
-          <p class="project-desc">
-            A full-stack hyperlocal grocery delivery platform with YouTube-to-cart ingredient extraction, NLP-based
-            transcript parsing, sub-10ms search, and an ML recommendation engine.
-          </p>
-          <ul class="project-features">
-            <li>🛒 YouTube-to-cart ingredient extraction via NLP</li>
-            <li>⚡ Sub-10ms product search system</li>
-            <li>🤖 ML-based personalised recommendation engine</li>
-            <li>💳 Scalable checkout with GST &amp; delivery pricing</li>
-          </ul>
           <div class="project-footer">
-            <span class="project-status">Completed</span>
-            <a href="https://github.com/rishitgokani005/flashmart" target="_blank" class="project-github-link">GitHub
-              ↗</a>
+            <span class="project-status">[FULL STACK / ML]</span>
+            <a href="https://github.com/rishitgokani005/flashmart" target="_blank" class="project-github-link">GitHub ↗</a>
           </div>
         </div>
 
         <!-- Project 5: VoxGlove -->
-        <div class="project-card reveal-up delay-5">
-          <div class="card-depth-layer"></div>
-          <div class="project-header">
-            <span class="project-number">05</span>
-            <div class="project-tags-top">
-              <span>ESP32</span><span>Python</span><span>Scikit-Learn</span><span>Flask</span>
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">05</span>
+              <div class="project-tags-top">
+                <span>ESP32</span><span>Python</span><span>Scikit-Learn</span><span>Flask</span>
+              </div>
             </div>
+            <h3 class="project-title">VoxGlove — Sign Language Interpreter</h3>
+            <p class="project-desc">
+              IoT + ML hardware system utilizing ESP32 sensor fusion and Random Forest gesture classifiers to convert sign language into real-time spoken text via low-latency API.
+            </p>
+            <ul class="project-features">
+              <li>🤲 ESP32 flex sensor data acquisition &amp; signal filtering</li>
+              <li>🧠 Random Forest classifier achieving high gesture accuracy</li>
+              <li>🔊 Real-time Text-to-Speech output via Flask REST API</li>
+            </ul>
           </div>
-          <h3 class="project-title">VoxGlove — Sign Language Interpreter</h3>
-          <p class="project-desc">
-            An end-to-end IoT + ML system using ESP32 and Python that converts real-time hand gestures into speech —
-            integrating a trained Random Forest model with Text-to-Speech for low-latency inference.
-          </p>
-          <ul class="project-features">
-            <li>🤲 ESP32 sensor fusion with 1000+ labelled samples per gesture</li>
-            <li>🧠 Random Forest classifier with StandardScaler preprocessing</li>
-            <li>🔊 Text-to-Speech integration for real-time speech output</li>
-            <li>🌐 Flask REST API deployment for low-latency inference</li>
-          </ul>
           <div class="project-footer">
-            <span class="project-status">Completed</span>
+            <span class="project-status">[IOT / EMBEDDED ML]</span>
+            <span class="project-github-link" style="opacity:0.7;">Completed</span>
+          </div>
+        </div>
+
+        <!-- Project 6: YouTube Ingredient Extractor -->
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">06</span>
+              <div class="project-tags-top">
+                <span>Python</span><span>Flask</span><span>Regex</span><span>yt-dlp</span>
+              </div>
+            </div>
+            <h3 class="project-title">YouTube Ingredient Extractor</h3>
+            <p class="project-desc">
+              Automated extraction engine processing video subtitles via Regex NLP pipelines to extract recipe ingredients and map them to live grocery inventory APIs.
+            </p>
+            <ul class="project-features">
+              <li>📺 Automated transcript fetching using yt-dlp &amp; Regex parsing</li>
+              <li>🛒 Automatic item matching &amp; cart cost estimation</li>
+            </ul>
+          </div>
+          <div class="project-footer">
+            <span class="project-status">[PYTHON / AUTOMATION]</span>
+            <a href="https://github.com/rishitgokani005/youtube-ingredient-extractor" target="_blank" class="project-github-link">GitHub ↗</a>
+          </div>
+        </div>
+
+        <!-- Project 7: Expense Splitter -->
+        <div class="project-card">
+          <div>
+            <div class="project-header">
+              <span class="project-number">07</span>
+              <div class="project-tags-top">
+                <span>Flutter</span><span>Dart</span><span>Firebase</span>
+              </div>
+            </div>
+            <h3 class="project-title">Not One Mobile App</h3>
+            <p class="project-desc">
+              Real-time multi-user expense splitting mobile application built with Flutter, Provider state management, PDF report generator, and Firebase sync.
+            </p>
+            <ul class="project-features">
+              <li>🔐 Firebase Auth &amp; Cloud Firestore real-time synchronization</li>
+              <li>📄 Automated PDF settlement reports &amp; interactive charts</li>
+            </ul>
+          </div>
+          <div class="project-footer">
+            <span class="project-status">[MOBILE / FLUTTER]</span>
+            <a href="https://github.com/rishitgokani005/NotOne" target="_blank" class="project-github-link">GitHub ↗</a>
           </div>
         </div>
 
@@ -403,61 +442,35 @@
     </div>
   </section>
 
-  <!-- ─── LEADERSHIP ─── -->
-  <section class="leadership section" id="leadership">
-    <div class="container">
-      <div class="section-label reveal-up">Community</div>
-      <h2 class="section-title reveal-up">Leadership</h2>
-
-      <div class="timeline">
-        <div class="timeline-item reveal-left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <span class="timeline-badge">CSI Student Branch</span>
-            <h3>Logistic Head</h3>
-            <p>Organised <strong>six technical workshops</strong> and one coding event as Logistics Head of the Computer
-              Society of India Student Branch.</p>
-            <p>Managed complete logistics for a <strong>National Level 24-Hour Hackathon</strong> organised by Odoo.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── ACHIEVEMENTS ─── -->
+  <!-- ─── ACHIEVEMENTS & LEADERSHIP ─── -->
   <section class="achievements section" id="achievements">
     <div class="container">
-      <div class="section-label reveal-up">Recognition</div>
-      <h2 class="section-title reveal-up">Achievements &amp; Certifications</h2>
+      <div class="section-label">&gt; SECTION 04</div>
+      <h2 class="section-title">ACHIEVEMENTS &amp; LEADERSHIP</h2>
 
       <div class="ach-grid">
 
-        <div class="ach-card big reveal-up delay-1">
-          <div class="ach-card-depth"></div>
+        <div class="ach-card">
           <div class="ach-icon">🏆</div>
           <div class="ach-body">
             <h3>3rd Place — Robofest Gujarat 4.0</h3>
-            <p>Secured 3rd place in the Fun &amp; Maze-Solving Robot category, winning a prize of
-              <strong>₹5,00,000</strong>.</p>
+            <p>Secured 3rd Position in the Fun &amp; Maze-Solving Robot category, winning a cash prize of <strong>₹5,00,000</strong>.</p>
           </div>
-          <!-- <div class="ach-ribbon">Winner</div> -->
         </div>
 
-        <div class="ach-card reveal-up delay-2">
-          <div class="ach-card-depth"></div>
+        <div class="ach-card">
           <div class="ach-icon">📜</div>
           <div class="ach-body">
             <h3>NPTEL Certification</h3>
-            <p>Introduction to Internet of Things — offered by <strong>IIT Kharagpur</strong>.</p>
+            <p>Introduction to Internet of Things (IoT) — certification offered by <strong>IIT Kharagpur</strong>.</p>
           </div>
         </div>
 
-        <div class="ach-card reveal-up delay-3">
-          <div class="ach-card-depth"></div>
+        <div class="ach-card">
           <div class="ach-icon">🎖️</div>
           <div class="ach-body">
-            <h3>Logistics Lead</h3>
-            <p>National Level <strong>24-Hour Hackathon</strong> organised by Odoo.</p>
+            <h3>CSI Logistics Lead</h3>
+            <p>Headed logistics for 6+ technical workshops and Odoo's National Level 24-Hour Hackathon at CSI GCET Branch.</p>
           </div>
         </div>
 
@@ -468,55 +481,58 @@
   <!-- ─── CONTACT ─── -->
   <section class="contact section" id="contact">
     <div class="container">
-      <div class="section-label reveal-up">Let's Talk</div>
-      <h2 class="section-title reveal-up">Contact Me</h2>
+      <div class="section-label">&gt; SECTION 05</div>
+      <h2 class="section-title">GET IN TOUCH</h2>
 
       <div class="contact-grid">
-        <div class="contact-left reveal-left">
+        <div class="contact-left">
           <p class="contact-intro">
-            I'm currently looking for <strong>full-stack, ML &amp; IoT development internship</strong> opportunities.
-            Whether you have a project in mind or just want to connect — my inbox is always open!
+            Open for <strong>Software Engineering, Machine Learning, Cybersecurity &amp; IoT internships</strong> and collaboration. Reach out via email or connect on social platforms below:
           </p>
+
           <div class="contact-links">
-            <a href="mailto:rishitgokani004@gmail.com" class="contact-link">
+            <a href="mailto:rishitgokani005@gmail.com" class="contact-link">
               <span class="clink-icon">📧</span>
               <div>
-                <span class="clink-label">Email</span>
-                <span class="clink-value">rishitgokani004@gmail.com</span>
+                <span class="clink-label">PRIMARY EMAIL</span>
+                <span class="clink-value">rishitgokani005@gmail.com</span>
               </div>
             </a>
+
             <a href="https://www.linkedin.com/in/rishit-gokani-05oc2005" target="_blank" class="contact-link">
               <span class="clink-icon">🔗</span>
               <div>
-                <span class="clink-label">LinkedIn</span>
+                <span class="clink-label">LINKEDIN PROFILE</span>
                 <span class="clink-value">linkedin.com/in/rishit-gokani-05oc2005</span>
               </div>
             </a>
-            <a href="https://github.com/rishitgokani005/" target="_blank" class="contact-link github-centered">
-              <div class="github-inner">
-                <span class="clink-icon">💻</span>
-                <span class="clink-value github-text">GitHub</span>
+
+            <a href="https://github.com/rishitgokani005" target="_blank" class="contact-link">
+              <span class="clink-icon">💻</span>
+              <div>
+                <span class="clink-label">GITHUB REPOSITORIES</span>
+                <span class="clink-value">github.com/rishitgokani005</span>
               </div>
             </a>
           </div>
         </div>
 
-        <div class="contact-right reveal-right">
+        <div class="contact-right">
           <form class="contact-form" onsubmit="handleSubmit(event)">
             <div class="form-group">
-              <label>Your Name</label>
-              <input type="text" placeholder="John Doe" required>
+              <label>&gt; YOUR NAME</label>
+              <input type="text" placeholder="John Doe" required />
             </div>
             <div class="form-group">
-              <label>Your Email</label>
-              <input type="email" placeholder="john@example.com" required>
+              <label>&gt; YOUR EMAIL</label>
+              <input type="email" placeholder="john@example.com" required />
             </div>
             <div class="form-group">
-              <label>Message</label>
-              <textarea placeholder="Tell me about your project or opportunity..." rows="4" required></textarea>
+              <label>&gt; MESSAGE</label>
+              <textarea placeholder="Write your message here..." rows="4" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">
-              <span>Send Message</span> <span>→</span>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              <span>SEND TRANSMISSION</span> <span>→</span>
             </button>
             <p class="form-note" id="formNote"></p>
           </form>
@@ -529,9 +545,9 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <span class="footer-logo">Rishit Gokani<span class="dot">.</span></span>
-        <p class="footer-copy">© 2025 Rishit Gokani. Built with ❤️ and lots of ☕</p>
-        <a href="#home" class="back-top">↑ Top</a>
+        <span class="footer-logo">RISHIT GOKANI [RETRO v2.5]</span>
+        <p class="footer-copy">© 2026 Rishit Gokani. Built with ❤️ and lots of ☕.</p>
+        <a href="#home" class="back-top">↑ TOP OF SYSTEM</a>
       </div>
     </div>
   </footer>
