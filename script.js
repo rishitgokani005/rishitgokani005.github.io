@@ -226,9 +226,10 @@ document.querySelectorAll('a, button, .skill-tag, .project-card, .contact-link, 
 // ─── TYPED TEXT EFFECT ───
 const roles = [
   'Full-Stack Web Developer',
-  'AI Engineer',
+  'QA Automation & CI/CD Engineer',
+  'Generative AI & GEO Developer',
+  'Cybersecurity Scanner Builder',
   'ML & Data Science Engineer',
-  'Flutter Developer',
   'CSE (IoT) Student @ GCET, Anand'
 ];
 
@@ -329,7 +330,7 @@ function handleSubmit(e) {
   const name = e.target[0].value;
   const email = e.target[1].value;
   const message = e.target[2].value;
-  const mailto = `mailto:rishitgokani004@gmail.com?subject=Portfolio%20Contact%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom%3A%20${encodeURIComponent(email)}`;
+  const mailto = `mailto:rishitgokani005@gmail.com?subject=Portfolio%20Contact%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom%3A%20${encodeURIComponent(email)}`;
   
   e.target.reset();
   window.location.href = mailto;

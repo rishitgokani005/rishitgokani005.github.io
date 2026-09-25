@@ -905,6 +905,8 @@ body.cursor-click #cursor-outer {
   padding-top: 16px;
   border-top: 2px solid var(--border);
   margin-top: auto;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .project-status {
@@ -914,7 +916,15 @@ body.cursor-click #cursor-outer {
   letter-spacing: 1px;
 }
 
-.project-github-link {
+.project-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.project-github-link,
+.project-link-btn {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
@@ -924,10 +934,26 @@ body.cursor-click #cursor-outer {
   background: var(--badge-bg);
   box-shadow: var(--retro-shadow-sm);
   transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.project-github-link:hover {
+.project-github-link:hover,
+.project-link-btn:hover {
   background: var(--accent);
+  color: #000;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--retro-shadow);
+}
+
+.project-link-btn.live-btn {
+  color: var(--accent-2);
+  border-color: var(--accent-2);
+}
+
+.project-link-btn.live-btn:hover {
+  background: var(--accent-2);
   color: #000;
 }
 
